@@ -41,4 +41,5 @@
         <button type="submit" class="btn btn-danger mt-3" onclick="return confirm('¿Estás seguro de que deseas borrar este registro?')">Borrar registro</button>
       </form>
     {% endif %}
+    <a href="{% url 'registros:home' %}">Volver a la lista de registros</a>
 {% endblock %}

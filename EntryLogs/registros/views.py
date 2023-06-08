@@ -9,10 +9,11 @@ from django.core.exceptions import ValidationError
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 
 
-from. forms import RegistroGeneralForm, RegistroCanastaForm, RegistroTiemposForm, RegistroDesechosForm, RegistroBrixForm, RegistroEmpacadosForm, CompararRegistrosForm, RegistrodeUsuarioForm, RegistroFresaGeneralForm, RegistroFresaCanastaForm, RegistroFresaTiemposForm, RegistroFresaBrixForm, RegistroFresaEmpacadosForm, CompararRegistrosFresaForm
+from. forms import RegistroGeneralForm, RegistroCanastaForm, RegistroTiemposForm, RegistroDesechosForm, RegistroBrixForm, RegistroEmpacadosForm, CompararRegistrosForm, RegistrodeUsuarioForm, RegistroFresaGeneralForm, RegistroFresaCanastaForm, RegistroFresaTiemposForm, RegistroFresaBrixForm, RegistroFresaEmpacadosForm, CompararRegistrosFresaForm, EditarUsuarioForm
 from. models import Registro, RegistroFresa
 
 from formtools.wizard.views import SessionWizardView
@@ -33,7 +34,7 @@ class RegistroWizardView(SessionWizardView):
     def get_success_url(self):
         return reverse('registros:registro_completado_mora')
 
-# Vista Detalle del Registro de Canasta de Mora ingresado.    
+# Vista que Confirma la creacion del Registro de Canasta de Mora ingresado.    
 class RegistroCompletadoView(TemplateView):
     model = Registro
     form_class = RegistroGeneralForm
@@ -68,6 +69,22 @@ class RegistroUsuarioView(SuccessMessageMixin, CreateView):
         for field in self.form_class.base_fields.values():
             field.help_text = ''
 
+
+class UserEditView(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = EditarUsuarioForm
+    template_name = 'registros/editar_usuario.html'
+    success_url = reverse_lazy('registros:home')
+
+    def get_object(self, queryset=None):
+        return self.request.user
+    
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        for field in self.form_class.base_fields.values():
+            field.help_text = ''
+
+
 # Vista de Inicio de Sesion.
 class LoginView(LoginView):
     template_name = 'registros/login.html'
@@ -99,17 +116,19 @@ class RegistroDeleteView(DeleteView):
 class RegistroUpdateView(LoginRequiredMixin, UpdateView):
      model = Registro
      form_class = RegistroGeneralForm
-     template_name = 'registros/edicion_registro_mora.html'
+     template_name = 'registros/editar_registro_mora.html'
 
      def dispatch(self, request, *args, **kwargs):
             obj = self.get_object()
-            if obj.created_by != request.user:
+            if obj.Usuario != request.user:
                 raise PermissionDenied
             return super().dispatch(request, *args, **kwargs)
      
      def get_success_url(self):
         return reverse_lazy('registros:home', kwargs={'pk': self.object.pk})
-     
+
+# Vista Detalle del Registro de Canasta de Mora ingresado.     
 class RegistroDetalladoView(DetailView):
     model = Registro
     template_name = 'registros/registro_detallado_mora.html'
+

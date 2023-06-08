@@ -1,9 +1,9 @@
 {% block content %}
-  <h1>Edita tu registro!</h1>
+  <h1>Editar perfil de usuario</h1>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <a href="{% url 'registros:home' %}">Volver a la lista de registros</a>
     <button type="submit">Guardar cambios</button>
   </form>
+  <a href="{% url 'registros:home' %}">Volver a Pagina Principal</a>
 {% endblock %}

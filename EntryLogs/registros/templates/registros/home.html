@@ -10,7 +10,7 @@
   <div class="container">
     <div class="header">
       {% if user.is_authenticated %}
-        <p>Bienvenid@, {{ user.username }} <a href="{% url 'registros:logout' %}">(Cerrar sesión)</a></p>
+        <p>Bienvenid@, {{ user.username }}  <a href="{% url 'registros:editar_usuario' %}">(Editar Perfil)</a> <a href="{% url 'registros:logout' %}">(Cerrar Sesión)</a></p>
       {% else %}
         <p><a href="{% url 'registros:login' %}">Iniciar sesión</a></p>
       {% endif %}
