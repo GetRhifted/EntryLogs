@@ -39,7 +39,9 @@
       <form action="{% url 'registros:borrar_registro_mora' registro.id %}" method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger mt-3" onclick="return confirm('¿Estás seguro de que deseas borrar este registro?')">Borrar registro</button>
+        <a href="{% url 'registros:editar_registro_mora' object.pk %}">Editar Registro</a>
       </form>
     {% endif %}
     <a href="{% url 'registros:home' %}">Volver a la lista de registros</a>
+    <a href="{% url 'registros:comparar_registros' %}">Compara tu Registro</a>
 {% endblock %}

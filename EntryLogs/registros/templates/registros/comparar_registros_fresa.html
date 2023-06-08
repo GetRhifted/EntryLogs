@@ -1,0 +1,10 @@
+{% block content %}
+  <h1>Compara tus registros!</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Comparar</button>
+  </form>
+  <a href="{% url 'registros:home' %}">Volver a la Pagina Principal</a>
+{% endblock %}

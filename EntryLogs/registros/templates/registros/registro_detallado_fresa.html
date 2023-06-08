@@ -1,40 +1,43 @@
 {% block content %}
-  <h1>Detalles del registro {{ object.Canasta }}</h1>
+  <h1>Detalles del registro {{ registrofresa.Canasta }}</h1>
   <ul>
-    <li><strong>Canasta:</strong> {{ object.Canasta }}</li>
-    <li><strong>Fecha:</strong> {{ object.Fecha }}</li>
-    <li><strong>Contenido Total:</strong> {{ object.Contenido_Total }}</li>
-    <li><strong>Azúcar:</strong> {{ object.Azucar }}</li>
-    <li><strong>Limón:</strong> {{ object.Limon }}</li>
-    <li><strong>Producto no Conforme:</strong> {{ object.Producto_no_Conforme }}</li>
-    <li><strong>Fruta Seleccionada:</strong> {{ object.Fruta_Seleccionada }}</li>
-    <li><strong>Inicio de la Jornada:</strong> {{ object.Inicio_Jornada }}</li>
-    <li><strong>Selección del Producto:</strong> {{ object.Seleccion_del_Prodcuto }}</li>
-    <li><strong>Hora de puesta en la Olla:</strong> {{ object.Fresa_Entra_a_la_Olla }}</li>
-    <li><strong>Hora de Hervor :</strong> {{ object.Hervor_Inicio }}</li>
-    <li><strong>Introducción del Azúcar :</strong> {{ object.Introduccion_Azucar }}</li>
-    <li><strong>Introducción del Limón :</strong> {{ object.Introduccion_Limon }}</li>
-    <li><strong>Hora de Finalización del Hervor :</strong> {{ object.Hervor_Final }}</li>
-    <li><strong>Hora del Licuado:</strong> {{ object.Hora_Licuado }}</li>
-    <li><strong>Hora Final de la Fresa:</strong> {{ object.Hora_Final_Fresa }}</li>
-    <li><strong>Inicio del Empaque:</strong> {{ object.Inicio_de_Empaque }}</li>
-    <li><strong>Finalización de la Canasta:</strong> {{ object.Finalizacion_de_la_Canasta }}</li>
-    <li><strong>Valor Primer Brix:</strong> {{ object.Valor_Primer_Brix }}</li>
-    <li><strong>Hora Primer Brix:</strong> {{ object.Hora_Primer_Brix }}</li>
-    <li><strong>Valor Brix Final:</strong> {{ object.Valor_Brix_Final }}</li>
-    <li><strong>Hora Brix Final:</strong> {{ object.Hora_Brix_Final }}</li>
-    <li><strong>Producto Terminado:</strong> {{ object.Producto_Terminado }}</li>
-    <li><strong>Media Libra:</strong> {{ object.Media_Libra }}</li>
-    <li><strong>Libra:</strong> {{ object.Libra }}</li>
-    <li><strong>Bolsa Seis kg:</strong> {{ object.Bolsa_Seis_kg }}</li>
-    <li><strong>Otro:</strong> {{ object.Otro }}</li>
-    <li><strong>Observaciones:</strong> {{ object.Observaciones }}</li>
-  </ul>
+    <li><strong>Canasta:</strong> {{ registrofresa.Canasta }}</li>
+    <li><strong>Fecha:</strong> {{ registrofresa.Fecha }}</li>
+    <li><strong>Contenido Total:</strong> {{ registrofresa.Contenido_Total }}</li>
+    <li><strong>Azúcar:</strong> {{ registrofresa.Azucar }}</li>
+    <li><strong>Limón:</strong> {{ registrofresa.Limon }}</li>
+    <li><strong>Producto no Conforme:</strong> {{ registrofresa.Producto_no_Conforme }}</li>
+    <li><strong>Fruta Seleccionada:</strong> {{ registrofresa.Fruta_Seleccionada }}</li>
+    <li><strong>Inicio de la Jornada:</strong> {{ registrofresa.Inicio_Jornada }}</li>
+    <li><strong>Selección del Producto:</strong> {{ registrofresa.Seleccion_del_Prodcuto }}</li>
+    <li><strong>Hora de puesta en la Olla:</strong> {{ registrofresa.Fresa_Entra_a_la_Olla }}</li>
+    <li><strong>Hora de Hervor :</strong> {{ registrofresa.Hervor_Inicio }}</li>
+    <li><strong>Introducción del Azúcar :</strong> {{ registrofresa.Introduccion_Azucar }}</li>
+    <li><strong>Introducción del Limón :</strong> {{ registrofresa.Introduccion_Limon }}</li>
+    <li><strong>Hora de Finalización del Hervor :</strong> {{ registrofresa.Hervor_Final }}</li>
+    <li><strong>Hora del Licuado:</strong> {{ registrofresa.Hora_Licuado }}</li>
+    <li><strong>Hora Final de la Fresa:</strong> {{ registrofresa.Hora_Final_Fresa }}</li>
+    <li><strong>Inicio del Empaque:</strong> {{ registrofresa.Inicio_de_Empaque }}</li>
+    <li><strong>Finalización de la Canasta:</strong> {{ registrofresa.Finalizacion_de_la_Canasta }}</li>
+    <li><strong>Valor Primer Brix:</strong> {{ registrofresa.Valor_Primer_Brix }}</li>
+    <li><strong>Hora Primer Brix:</strong> {{ registrofresa.Hora_Primer_Brix }}</li>
+    <li><strong>Valor Brix Final:</strong> {{ registrofresa.Valor_Brix_Final }}</li>
+    <li><strong>Hora Brix Final:</strong> {{ registrofresa.Hora_Brix_Final }}</li>
+    <li><strong>Producto Terminado:</strong> {{ registrofresa.Producto_Terminado }}</li>
+    <li><strong>Media Libra:</strong> {{ registrofresa.Media_Libra }}</li>
+    <li><strong>Libra:</strong> {{ registrofresa.Libra }}</li>
+    <li><strong>Bolsa Seis kg:</strong> {{ registrofresa.Bolsa_Seis_kg }}</li>
+    <li><strong>Otro:</strong> {{ registrofresa.Otro }}</li>
+    <li><strong>Observaciones:</strong> {{ registrofresa.Observaciones }}</li>
+    <li><strong>Registro ingresado por:</strong> {{ registrofresa.Usuario }}</li>
+    {% if user == registrofresa.Usuario %}
+    <!-- Mostrar opciones de edición y eliminación solo si el usuario actual es el propietario -->
+    <form action="{% url 'registros:borrar_registro_fresa' registrofresa.id %}" method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger mt-3" onclick="return confirm('¿Estás seguro de que deseas borrar este registro?')">Borrar registro</button>
+      <a href="{% url 'registros:editar_registro_fresa' object.pk %}">Editar Registro</a>
+    </form>
+  {% endif %}
   <a href="{% url 'registros:home' %}">Volver a la lista de registros</a>
-  <a href="{% url 'registros:edicion_registro_fresa' object.pk %}">Editar Registro</a>
   <a href="{% url 'registros:comparar_registros_fresa' %}">Compara tu Registro</a>
-  <form action="{% url 'registros:borrar_registro_fresa' object.pk %}" method="post" class="d-inline">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger mt-3" onclick="return confirm('¿Estás seguro de que deseas borrar este registro?')">Borrar registro</button>
-  </form>
 {% endblock %}

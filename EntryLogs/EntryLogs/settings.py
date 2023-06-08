@@ -132,3 +132,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'registros:home'
 LOGOUT_REDIRECT_URL = 'registros:login'
 LOGIN_URL = 'registros:login'
+
+NUMERO_MINIMO_REGISTROS = 2

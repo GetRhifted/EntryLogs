@@ -24,14 +24,19 @@
           {% for registro in registros_mora %}
             <li>
               <a href="{% url 'registros:registro_detallado_mora' registro.pk %}">{{ registro.Canasta }}</a>
-              {% if user == registro.Usuario %}
-                <a href="{% url 'registros:editar_registro_mora' registro.pk %}">Editar</a>
-                <a href="{% url 'registros:borrar_registro_mora' registro.pk %}">Borrar</a>
-              {% endif %}
             </li>
           {% endfor %}
         </ul>
         <a href="{% url 'registros:registro_mora' %}" class="btn btn-primary">Agregar Canasta de Mora</a>
+        <h2>Últimos 10 registros de Fresa:</h2>
+        <ul>
+          {% for registrofresa in registros_fresa %}
+            <li>
+              <a href="{% url 'registros:registro_detallado_fresa' registrofresa.pk %}">{{ registrofresa.Canasta }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+        <a href="{% url 'registros:registro_fresa' %}" class="btn btn-primary">Agregar Canasta de Fresa</a>
     {% endblock %}
   </div>
 </body>
