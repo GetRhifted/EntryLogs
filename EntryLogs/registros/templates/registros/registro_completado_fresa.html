@@ -7,10 +7,10 @@
       <a href="{% url 'registros:home' %}" class="btn btn-primary">Ir a la Pagina Principal</a>
     </div>
     <div class="col text-center">
-      <a href="{% url 'registros:registro_detallado_mora' pk=registro.pk %}" class="btn btn-success">Detalles del Registro!</a>
+      <a href="{% url 'registros:registro_detallado_fresa' pk=registrofresa.pk %}" class="btn btn-success">Detalles del Registro!</a>
     </div>
     <div class="col text-end">
-      <a href="{% url 'registros:registro_mora' %}" class="btn btn-primary">Haz un nuevo Registro!</a>
+      <a href="{% url 'registros:registro_fresa' %}" class="btn btn-primary">Haz un nuevo Registro!</a>
     </div>
   </div>
 {% endblock %}

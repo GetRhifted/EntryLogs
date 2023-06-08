@@ -1,0 +1,12 @@
+{% block content %}
+<h1 class="main-heading">Ingresa tus Credenciales</h1>
+
+<form class="form" method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+
+    <button type="submit" id="submit">Iniciar Sesion</button>
+</form>
+<a href="{% url 'registros:registro_usuario' %}" class="btn btn-primary">¿No tienes usuario? Crea uno!</a>
+
+{% endblock %}

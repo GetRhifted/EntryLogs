@@ -1,0 +1,12 @@
+{% block content %}
+<h1>Crea tu Usuario!</h1>
+
+<form class="form" method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+
+    <button type="submit" id="submit">Resgistrarse</button>
+</form>
+<a href="{% url 'registros:home' %}">Volver a la Pagina Principal</a>
+
+{% endblock %}

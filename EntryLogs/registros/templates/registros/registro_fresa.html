@@ -1,0 +1,17 @@
+{% block content %}
+  <h1>Agregar nuevo registro!</h1>
+  <h2>{{ form.titulo.value }}</h2> <!-- Mostrar el subtítulo aquí -->
+  <form method="post">
+    {% csrf_token %}
+    {{ wizard.management_form }}
+    {% if wizard.form.forms %}
+      {{ wizard.form.management_form }}
+      {% for form in wizard.form.forms %}
+        {{ form.as_p }}
+      {% endfor %}
+    {% else %}
+      {{ wizard.form.as_p }}
+    {% endif %}
+    <button type="submit" class="btn btn-primary">Siguiente</button>
+  </form>
+{% endblock %}

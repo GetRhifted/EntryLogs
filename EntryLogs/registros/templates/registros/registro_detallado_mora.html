@@ -1,0 +1,44 @@
+{% block content %}
+  <h1>Detalles del registro {{ registro.Canasta }}</h1>
+  <ul>
+    <li><strong>Canasta:</strong> {{ registro.Canasta }}</li>
+    <li><strong>Fecha:</strong> {{ registro.Fecha }}</li>
+    <li><strong>Contenido Total:</strong> {{ registro.Contenido_Total }}</li>
+    <li><strong>Azúcar:</strong> {{ registro.Azucar }}</li>
+    <li><strong>Sorbato:</strong> {{ registro.Sorbato }}</li>
+    <li><strong>Producto no Conforme:</strong> {{ registro.Producto_no_Conforme }}</li>
+    <li><strong>Fruta Seleccionada:</strong> {{ registro.Fruta_Seleccionada }}</li>
+    <li><strong>Inicio de la Jornada:</strong> {{ registro.Inicio_Jornada }}</li>
+    <li><strong>Selección del Producto:</strong> {{ registro.Seleccion_del_Prodcuto }}</li>
+    <li><strong>Hora de puesta en la Olla:</strong> {{ registro.Mora_Entra_a_la_Olla }}</li>
+    <li><strong>Hora de Hervor :</strong> {{ registro.Hervor_Inicio }}</li>
+    <li><strong>Hora de Finalización del Hervor :</strong> {{ registro.Hervor_Final }}</li>
+    <li><strong>Inicio del Enfriamiento:</strong> {{ registro.Enfriamiento_Inicio }}</li>
+    <li><strong>Final del Enfriamiento:</strong> {{ registro.Enfriamiento_Final }}</li>
+    <li><strong>Inicio del Despulpado:</strong> {{ registro.Inicio_Despulpado }}</li>
+    <li><strong>Final del Despulpado:</strong> {{ registro.Final_Despulpado }}</li>
+    <li><strong>Segunda Cocción:</strong> {{ registro.Segunda_Coccion }}</li>
+    <li><strong>Hora Final de la Mora:</strong> {{ registro.Hora_Final_Mora }}</li>
+    <li><strong>Inicio del Empaque:</strong> {{ registro.Inicio_de_Empaque }}</li>
+    <li><strong>Finalización de la Canasta:</strong> {{ registro.Finalizacion_de_la_Canasta }}</li>
+    <li><strong>Semilla:</strong> {{ registro.Semilla }}</li>
+    <li><strong>Pulpa:</strong> {{ registro.Pulpa }}</li>
+    <li><strong>Valor Primer Brix:</strong> {{ registro.Valor_Primer_Brix }}</li>
+    <li><strong>Hora Primer Brix:</strong> {{ registro.Hora_Primer_Brix }}</li>
+    <li><strong>Valor Brix Final:</strong> {{ registro.Valor_Brix_Final }}</li>
+    <li><strong>Hora Brix Final:</strong> {{ registro.Hora_Brix_Final }}</li>
+    <li><strong>Producto Terminado:</strong> {{ registro.Producto_Terminado }}</li>
+    <li><strong>Media Libra:</strong> {{ registro.Media_Libra }}</li>
+    <li><strong>Libra:</strong> {{ registro.Libra }}</li>
+    <li><strong>Bolsa Seis kg:</strong> {{ registro.Bolsa_Seis_kg }}</li>
+    <li><strong>Otro:</strong> {{ registro.Otro }}</li>
+    <li><strong>Observaciones:</strong> {{ registro.Observaciones }}</li>
+    <li><strong>Registro ingresado por:</strong> {{ registro.Usuario }}</li>
+    {% if user == registro.Usuario %}
+      <!-- Mostrar opciones de edición y eliminación solo si el usuario actual es el propietario -->
+      <form action="{% url 'registros:borrar_registro_mora' registro.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger mt-3" onclick="return confirm('¿Estás seguro de que deseas borrar este registro?')">Borrar registro</button>
+      </form>
+    {% endif %}
+{% endblock %}
