@@ -16,6 +16,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='registros/login.html'), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('registro_usuario/', views.RegistroUsuarioView.as_view(), name='registro_usuario'),
+    path('resultados_busqueda/', views.ResultadosBusquedaView.as_view(), name='resultados_busqueda'),
     path('editar_registro_mora/<int:pk>/', login_required(views.RegistroUpdateView.as_view()), name='editar_registro_mora'),
     path('editar_registro_mora2/<int:pk>/', login_required(views.RegistroUpdateView2.as_view()), name='editar_registro_mora2'),
     path('editar_registro_mora3/<int:pk>/', login_required(views.RegistroUpdateView3.as_view()), name='editar_registro_mora3'),
