@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 from .models import Registro, RegistroFresa
 
 # Formularios para el registro de la Mora.
-
 class RegistroGeneralForm(forms.ModelForm):
     class Meta:
         model = Registro
@@ -76,7 +75,6 @@ class CompararRegistrosForm(forms.Form):
     )
 
 # Formulario para el registro de Usuarios.
-
 class RegistrodeUsuarioForm(UserCreationForm):
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirma tu Contraseña', widget=forms.PasswordInput)
@@ -92,7 +90,6 @@ class EditarUsuarioForm(forms.ModelForm):
 
 
 # Formularios para el registro de la Fresa.
-
 class RegistroFresaGeneralForm(forms.ModelForm):
     class Meta:
         model = RegistroFresa
@@ -155,7 +152,6 @@ class CompararRegistrosFresaForm(forms.Form):
 
 
 # Formulario de seleccion de Registro.
-
 class SeleccionTipoCanastaForm(forms.Form):
     TIPOS_CANASTA = (
         ('Mora', 'Canasta de Mora'),
