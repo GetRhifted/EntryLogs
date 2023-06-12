@@ -42,6 +42,7 @@
         <a href="{% url 'registros:editar_registro_mora' object.pk %}">Editar Registro</a>
       </form>
     {% endif %}
+    
     <a href="{% url 'registros:home' %}">Volver a la lista de registros</a>
     <a href="{% url 'registros:comparar_registros' %}">Compara tu Registro</a>
 {% endblock %}

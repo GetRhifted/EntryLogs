@@ -1,0 +1,17 @@
+{% block content %}
+  <h2>Resultados de la búsqueda:</h2>
+  {% if registros %}
+    <ul>
+      {% for registro in registros %}
+        {% if registro.get_tipo == 'mora' %}
+          <li><a href="{% url 'registros:registro_detallado_mora' registro.pk %}">{{ registro.Canasta }}</a></li>
+        {% elif registro.get_tipo == 'fresa' %}
+          <li><a href="{% url 'registros:registro_detallado_fresa' registro.pk %}">{{ registro.Canasta }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No se encontraron resultados.</p>
+  {% endif %}
+  <a href="{% url 'registros:home' %}">Volver a la página principal</a>
+{% endblock %}

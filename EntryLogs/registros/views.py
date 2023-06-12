@@ -11,7 +11,9 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
+from django.views import View
 
+from django.db.models import Q
 
 from. forms import RegistroGeneralForm, RegistroCanastaForm, RegistroTiemposForm, RegistroDesechosForm, RegistroBrixForm, RegistroEmpacadosForm, CompararRegistrosForm, RegistrodeUsuarioForm, RegistroFresaGeneralForm, RegistroFresaCanastaForm, RegistroFresaTiemposForm, RegistroFresaBrixForm, RegistroFresaEmpacadosForm, CompararRegistrosFresaForm, EditarUsuarioForm
 from. models import Registro, RegistroFresa
@@ -108,6 +110,18 @@ class HomeView(ListView):
 
     def get_queryset(self):
         return Registro.objects.all().order_by('-id')[:10]
+    
+# Vista para visualizar los resultados de Busquedas
+class ResultadosBusquedaView(ListView):
+    template_name = 'registros/resultados_busqueda.html'
+    context_object_name = 'registros'
+
+    def get_queryset(self):
+        search_query = self.request.GET.get('search_query')
+        queryset_mora = list(Registro.objects.filter(Canasta__icontains=search_query))
+        queryset_fresa = list(RegistroFresa.objects.filter(Canasta__icontains=search_query))
+        queryset = queryset_mora + queryset_fresa
+        return queryset
     
 # Vista para borrar Registros de Canastas de Mora.
 class RegistroDeleteView(DeleteView):

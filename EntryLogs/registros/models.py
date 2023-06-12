@@ -48,6 +48,8 @@ class Registro(models.Model):
     def __str__(self):
         return self.Canasta
 
+    def get_tipo(self):
+        return 'mora'  # Identificador para el modelo de Mora
 
 # Modelo para el registro de la Fresa.
 
@@ -88,3 +90,6 @@ class RegistroFresa(models.Model):
 
     def __str__(self):
         return self.Canasta
+
+    def get_tipo(self):
+        return 'fresa'  # Identificador para el modelo de Fresa
