@@ -1,9 +1,54 @@
 {% block content %}
-  <h1>Editar perfil de usuario</h1>
+<title>Editar Perfil EntryLogs</title>
+<style>
+  /* Estilos personalizados */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .form {
+    max-width: 400px;
+    padding: 80px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .main-heading {
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+</style>
+<div class="form">
+  <h1 class= "main-heading">Editar perfil de usuario</h1>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Guardar cambios</button>
   </form>
-  <a href="{% url 'registros:home' %}">Volver a Pagina Principal</a>
+  <a href="{% url 'registros:home' %}" class="btn btn-primary">Volver a la Página Principal</a>
 {% endblock %}
