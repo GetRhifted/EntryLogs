@@ -1,16 +1,106 @@
 {% block content %}
-  <h1>Registro completado!</h1>
+<title>Registro Completado</title>
+<style>
+  /* Estilos personalizados */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+
+  .container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 80px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .header {
+    text-align: right;
+    margin-bottom: 20px;
+  }
+
+  .header a {
+    color: #333;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+
+  .main-heading {
+    color: #007bff;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+
+  input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  h2 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    margin-left: 20px;
+    list-style-type: disc;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .btn-success {
+    background-color: #28a745;
+    color: #fff;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .btn-primary,
+  .btn-success {
+    display: block;
+  }
+</style>
+<div class="container">
+  <h1 class="main-heading">Registro completado!</h1>
   <p>El registro ha sido creado exitosamente.</p>
 
   <div class="row mt-5">
-    <div class="col">
-      <a href="{% url 'registros:home' %}" class="btn btn-primary">Ir a la Pagina Principal</a>
-    </div>
     <div class="col text-center">
-      <a href="{% url 'registros:registro_detallado_mora' pk=registro.pk %}" class="btn btn-success">Detalles del Registro!</a>
+      <a href="{% url 'registros:home' %}" class="btn btn-primary">Ir a la Página Principal</a>
     </div>
-    <div class="col text-end">
-      <a href="{% url 'registros:registro_mora' %}" class="btn btn-primary">Haz un nuevo Registro!</a>
+
+    <div class="col text-center">
+      <a href="{% url 'registros:registro_detallado_mora' pk=registro.pk %}" class="btn btn-success">Detalles del Registro</a>
+    </div>
+
+    <div class="col text-center">
+      <a href="{% url 'registros:registro_mora' %}" class="btn btn-primary">Nuevo Registro</a>
     </div>
   </div>
+</div>
 {% endblock %}

@@ -1,48 +1,124 @@
 {% block content %}
-  <h1>Detalles del registro {{ registro.Canasta }}</h1>
-  <ul>
-    <li><strong>Canasta:</strong> {{ registro.Canasta }}</li>
-    <li><strong>Fecha:</strong> {{ registro.Fecha }}</li>
-    <li><strong>Contenido Total:</strong> {{ registro.Contenido_Total }}</li>
-    <li><strong>Azúcar:</strong> {{ registro.Azucar }}</li>
-    <li><strong>Sorbato:</strong> {{ registro.Sorbato }}</li>
-    <li><strong>Producto no Conforme:</strong> {{ registro.Producto_no_Conforme }}</li>
-    <li><strong>Fruta Seleccionada:</strong> {{ registro.Fruta_Seleccionada }}</li>
-    <li><strong>Inicio de la Jornada:</strong> {{ registro.Inicio_Jornada }}</li>
-    <li><strong>Selección del Producto:</strong> {{ registro.Seleccion_del_Prodcuto }}</li>
-    <li><strong>Hora de puesta en la Olla:</strong> {{ registro.Mora_Entra_a_la_Olla }}</li>
-    <li><strong>Hora de Hervor :</strong> {{ registro.Hervor_Inicio }}</li>
-    <li><strong>Hora de Finalización del Hervor :</strong> {{ registro.Hervor_Final }}</li>
-    <li><strong>Inicio del Enfriamiento:</strong> {{ registro.Enfriamiento_Inicio }}</li>
-    <li><strong>Final del Enfriamiento:</strong> {{ registro.Enfriamiento_Final }}</li>
-    <li><strong>Inicio del Despulpado:</strong> {{ registro.Inicio_Despulpado }}</li>
-    <li><strong>Final del Despulpado:</strong> {{ registro.Final_Despulpado }}</li>
-    <li><strong>Segunda Cocción:</strong> {{ registro.Segunda_Coccion }}</li>
-    <li><strong>Hora Final de la Mora:</strong> {{ registro.Hora_Final_Mora }}</li>
-    <li><strong>Inicio del Empaque:</strong> {{ registro.Inicio_de_Empaque }}</li>
-    <li><strong>Finalización de la Canasta:</strong> {{ registro.Finalizacion_de_la_Canasta }}</li>
-    <li><strong>Semilla:</strong> {{ registro.Semilla }}</li>
-    <li><strong>Pulpa:</strong> {{ registro.Pulpa }}</li>
-    <li><strong>Valor Primer Brix:</strong> {{ registro.Valor_Primer_Brix }}</li>
-    <li><strong>Hora Primer Brix:</strong> {{ registro.Hora_Primer_Brix }}</li>
-    <li><strong>Valor Brix Final:</strong> {{ registro.Valor_Brix_Final }}</li>
-    <li><strong>Hora Brix Final:</strong> {{ registro.Hora_Brix_Final }}</li>
-    <li><strong>Producto Terminado:</strong> {{ registro.Producto_Terminado }}</li>
-    <li><strong>Media Libra:</strong> {{ registro.Media_Libra }}</li>
-    <li><strong>Libra:</strong> {{ registro.Libra }}</li>
-    <li><strong>Bolsa Seis kg:</strong> {{ registro.Bolsa_Seis_kg }}</li>
-    <li><strong>Otro:</strong> {{ registro.Otro }}</li>
-    <li><strong>Observaciones:</strong> {{ registro.Observaciones }}</li>
-    <li><strong>Registro ingresado por:</strong> {{ registro.Usuario }}</li>
+  <title>Detalles del Registro</title>
+  <style>
+    /* Estilos personalizados */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 80px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .header a {
+      color: #333;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    .main-heading {
+      color: #007bff;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style-type: disc;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+
+  <div class="container">
+    <h1 class="main-heading">Detalles del registro {{ registro.Canasta }}</h1>
+    <ul>
+      <li><strong>Canasta:</strong> {{ registro.Canasta }}</li>
+      <li><strong>Fecha:</strong> {{ registro.Fecha }}</li>
+      <li><strong>Contenido Total:</strong> {{ registro.Contenido_Total }}</li>
+      <li><strong>Azúcar:</strong> {{ registro.Azucar }}</li>
+      <li><strong>Sorbato:</strong> {{ registro.Sorbato }}</li>
+      <li><strong>Producto no Conforme:</strong> {{ registro.Producto_no_Conforme }}</li>
+      <li><strong>Fruta Seleccionada:</strong> {{ registro.Fruta_Seleccionada }}</li>
+      <li><strong>Inicio de la Jornada:</strong> {{ registro.Inicio_Jornada }}</li>
+      <li><strong>Selección del Producto:</strong> {{ registro.Seleccion_del_Prodcuto }}</li>
+      <li><strong>Hora de puesta en la Olla:</strong> {{ registro.Mora_Entra_a_la_Olla }}</li>
+      <li><strong>Hora de Hervor :</strong> {{ registro.Hervor_Inicio }}</li>
+      <li><strong>Hora de Finalización del Hervor :</strong> {{ registro.Hervor_Final }}</li>
+      <li><strong>Inicio del Enfriamiento:</strong> {{ registro.Enfriamiento_Inicio }}</li>
+      <li><strong>Final del Enfriamiento:</strong> {{ registro.Enfriamiento_Final }}</li>
+      <li><strong>Inicio del Despulpado:</strong> {{ registro.Inicio_Despulpado }}</li>
+      <li><strong>Final del Despulpado:</strong> {{ registro.Final_Despulpado }}</li>
+      <li><strong>Segunda Cocción:</strong> {{ registro.Segunda_Coccion }}</li>
+      <li><strong>Hora Final de la Mora:</strong> {{ registro.Hora_Final_Mora }}</li>
+      <li><strong>Inicio del Empaque:</strong> {{ registro.Inicio_de_Empaque }}</li>
+      <li><strong>Finalización de la Canasta:</strong> {{ registro.Finalizacion_de_la_Canasta }}</li>
+      <li><strong>Semilla:</strong> {{ registro.Semilla }}</li>
+      <li><strong>Pulpa:</strong> {{ registro.Pulpa }}</li>
+      <li><strong>Valor Primer Brix:</strong> {{ registro.Valor_Primer_Brix }}</li>
+      <li><strong>Hora Primer Brix:</strong> {{ registro.Hora_Primer_Brix }}</li>
+      <li><strong>Valor Brix Final:</strong> {{ registro.Valor_Brix_Final }}</li>
+      <li><strong>Hora Brix Final:</strong> {{ registro.Hora_Brix_Final }}</li>
+      <li><strong>Producto Terminado:</strong> {{ registro.Producto_Terminado }}</li>
+      <li><strong>Media Libra:</strong> {{ registro.Media_Libra }}</li>
+      <li><strong>Libra:</strong> {{ registro.Libra }}</li>
+      <li><strong>Bolsa Seis kg:</strong> {{ registro.Bolsa_Seis_kg }}</li>
+      <li><strong>Otro:</strong> {{ registro.Otro }}</li>
+      <li><strong>Observaciones:</strong> {{ registro.Observaciones }}</li>
+      <li><strong>Registro ingresado por:</strong> {{ registro.Usuario }}</li>
+    </ul>
+
     {% if user == registro.Usuario %}
       <!-- Mostrar opciones de edición y eliminación solo si el usuario actual es el propietario -->
       <form action="{% url 'registros:borrar_registro_mora' registro.id %}" method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger mt-3" onclick="return confirm('¿Estás seguro de que deseas borrar este registro?')">Borrar registro</button>
-        <a href="{% url 'registros:editar_registro_mora' object.pk %}">Editar Registro</a>
+        <a href="{% url 'registros:editar_registro_mora' object.pk %}" class="btn btn-primary mt-3">Editar Registro</a>
       </form>
     {% endif %}
-    
-    <a href="{% url 'registros:home' %}">Volver a la lista de registros</a>
-    <a href="{% url 'registros:comparar_registros' %}">Compara tu Registro</a>
+
+    <a href="{% url 'registros:home' %}" class="btn btn-primary mt-3">Volver a la lista de registros</a>
+    <a href="{% url 'registros:comparar_registros' %}" class="btn btn-primary mt-3">Compara tu Registro</a>
+  </div>
 {% endblock %}
