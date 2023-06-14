@@ -1,12 +1,58 @@
 {% block content %}
-<h1 class="main-heading">Ingresa tus Credenciales</h1>
+<title>Inicio de Sesion EntryLogs</title>
+<style>
+  /* Estilos personalizados */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
-<form class="form" method="post">
+  .form {
+    max-width: 400px;
+    padding: 80px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .main-heading {
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+</style>
+<div class="form">
+  <h1 class="main-heading">EntryLogs</h1>
+    <h2 class="main-heading">Ingresa tus Credenciales</h2>
+
+  <form method="post">
     {% csrf_token %}
-    {{ form.as_p}}
+    {{ form.as_p }}
 
-    <button type="submit" id="submit">Iniciar Sesion</button>
-</form>
-<a href="{% url 'registros:registro_usuario' %}" class="btn btn-primary">¿No tienes usuario? Crea uno!</a>
-
+    <button type="submit" id="submit">Iniciar Sesión</button>
+  </form>
+  <a href="{% url 'registros:registro_usuario' %}" class="btn btn-primary">¿No tienes usuario? ¡Crea uno!</a>
+</div>
 {% endblock %}
