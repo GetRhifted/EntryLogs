@@ -79,8 +79,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'EntryLogs',
-        'USER': 'rhift',
-        'PASSWORD': 'shibusen9',
+        'USER': 'user',
+        'PASSWORD': 'user',
         'HOST': 'localhost',
         'PORT': '3306'
     }

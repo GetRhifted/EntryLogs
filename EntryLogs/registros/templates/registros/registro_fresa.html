@@ -1,78 +1,11 @@
+{% extends 'registros/main.html' %}
 {% block content %}
-<title>Registro Nuevo</title>
-<style>
-  /* Estilos personalizados */
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-  }
 
-  .container {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 80px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+<div class="header-bar">
+  <h3>Agregar Registro de Fresa Nuevo</h3>
+</div>
 
-  .header {
-    text-align: right;
-    margin-bottom: 20px;
-  }
-
-  .header a {
-    color: #333;
-    text-decoration: none;
-    margin-left: 10px;
-  }
-
-  .main-heading {
-    color: #007bff;
-    margin-bottom: 20px;
-    text-align: left;
-  }
-
-  form {
-    margin-bottom: 20px;
-  }
-
-  input[type="text"] {
-    padding: 10px;
-    width: 300px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-
-  button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  h2 {
-    color: #333;
-    margin-bottom: 10px;
-  }
-
-  ul {
-    margin-left: 20px;
-    list-style-type: disc;
-  }
-
-  .btn-primary {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-</style>
-<div class="container">
-  <h1 class= "main-heading">Agregar nuevo registro!</h1>
-  <h2>{{ form.titulo.value }}</h2> <!-- Mostrar el subtítulo aquí -->
+<div class="card-body">
   <form method="post">
     {% csrf_token %}
     {{ wizard.management_form }}
@@ -84,7 +17,8 @@
     {% else %}
       {{ wizard.form.as_p }}
     {% endif %}
-    <button type="submit" class="btn btn-primary">Siguiente</button>
+    <button type="submit" class="button">Siguiente</button>
   </form>
 </div>
-{% endblock %}
+
+{% endblock content %}

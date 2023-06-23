@@ -1,97 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>EntryLogs Home</title>
-  <style>
-    /* Estilos personalizados */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-    }
+{% extends 'registros/main.html' %}
+{% block content %}
 
-    .container {
-      max-width: 1500px;
-      margin: 0 auto;
-      padding: 80px;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+<div class="header-bar">
+  {% if user.is_authenticated %}
+    <a>Bienvenid@ a EntryLogs, {{ user.username }}</a>
+    <a href="{% url 'registros:editar_usuario' %}">(Editar Perfil)</a>
+    <a href="{% url 'registros:logout' %}">(Cerrar Sesión)</a>
+  {% else %}
+    <a href="{% url 'registros:login' %}">Iniciar sesión</a>
+  {% endif %}
+</div>
 
-    .header {
-      text-align: right;
-      margin-bottom: 20px;
-    }
+<div id="search-add-wrapper">
+  <form method="GET" style="margin-top: 25px; margin-left: 15px; display: flex;" action="{% url 'registros:resultados_busqueda' %}">
+      <input type="text" name="search_query" placeholder="Buscar canasta...">
+      <input class="button" type="submit" value="Buscar">
+  </form>
+</div>
 
-    .header a {
-      color: #333;
-      text-decoration: none;
-      margin-left: 10px;
-    }
+<div class="card-body">
 
-    .main-heading {
-      color: #007bff;
-      margin-bottom: 20px;
-      text-align: left;
-    }
-
-    form {
-      margin-bottom: 20px;
-    }
-
-    input[type="text"] {
-      padding: 10px;
-      width: 300px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button[type="submit"] {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    h2 {
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    ul {
-      margin-left: 20px;
-      list-style-type: disc;
-    }
-
-    .btn-primary {
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      {% if user.is_authenticated %}
-        <p style="text-align: right;">Bienvenid@, {{ user.username }}  <a href="{% url 'registros:editar_usuario' %}">(Editar Perfil)</a> <a href="{% url 'registros:logout' %}">(Cerrar Sesión)</a></p>
-      {% else %}
-        <p style="text-align: right;"><a href="{% url 'registros:login' %}">Iniciar sesión</a></p>
-      {% endif %}
-    </div>
-    {% block content %}
-      <div class="col-md-9">
-        <h1 class="main-heading">EntryLogs, Tu agenda virtual</h1>
-        
-        <form method="GET" action="{% url 'registros:resultados_busqueda' %}">
-          <input type="text" name="search_query" placeholder="Buscar por nombre de canasta">
-          <button type="submit">Buscar</button>
-        </form>
-
-        <h2>Últimos 10 registros de Mora:</h2>
+        <h3>Últimos 10 registros de Mora:</h3>
         <ul>
           {% for registro in registros_mora %}
             <li>
@@ -99,8 +28,8 @@
             </li>
           {% endfor %}
         </ul>
-        <a href="{% url 'registros:registro_mora' %}" class="btn btn-primary">Agregar Canasta de Mora</a>
-        <h2>Últimos 10 registros de Fresa:</h2>
+        <a id="add-link-mora" href="{% url 'registros:registro_mora' %}">&#x2b;</a>
+        <h3>Últimos 10 registros de Fresa:</h3>
         <ul>
           {% for registrofresa in registros_fresa %}
             <li>
@@ -108,10 +37,10 @@
             </li>
           {% endfor %}
         </ul>
-        <a href="{% url 'registros:registro_fresa' %}" class="btn btn-primary">Agregar Canasta de Fresa</a>
-    {% endblock %}
-  </div>
-</body>
-</html>
+        <a id="add-link-fresa" href="{% url 'registros:registro_fresa' %}">&#x2b;</a>
+        
+</div>
+
+{% endblock content %}
 
 

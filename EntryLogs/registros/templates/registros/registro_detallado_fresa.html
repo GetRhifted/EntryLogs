@@ -1,118 +1,54 @@
+{% extends 'registros/main.html' %}
 {% block content %}
-<title>Detalles del Registro</title>
-  <style>
-    /* Estilos personalizados */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-    }
 
-    .container {
-      max-width: 1500px;
-      margin: 0 auto;
-      padding: 80px;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+<div class="header-bar">
+  <h3>Detalles del registro {{ registrofresa.Canasta }}<h3>
+</div>
 
-    .header {
-      text-align: right;
-      margin-bottom: 20px;
-    }
-
-    .header a {
-      color: #333;
-      text-decoration: none;
-      margin-left: 10px;
-    }
-
-    .main-heading {
-      color: #007bff;
-      margin-bottom: 20px;
-      text-align: left;
-    }
-
-    form {
-      margin-bottom: 20px;
-    }
-
-    input[type="text"] {
-      padding: 10px;
-      width: 300px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button[type="submit"] {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    h2 {
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    ul {
-      margin-left: 20px;
-      list-style-type: disc;
-    }
-
-    .btn-primary {
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-  </style>
-  <div class="container">
-    <h1 class="main-heading">Detalles del registro {{ registrofresa.Canasta }}</h1>
-    <ul>
-      <li><strong>Canasta:</strong> {{ registrofresa.Canasta }}</li>
-      <li><strong>Fecha:</strong> {{ registrofresa.Fecha }}</li>
-      <li><strong>Contenido Total:</strong> {{ registrofresa.Contenido_Total }}</li>
-      <li><strong>Azúcar:</strong> {{ registrofresa.Azucar }}</li>
-      <li><strong>Limón:</strong> {{ registrofresa.Limon }}</li>
-      <li><strong>Producto no Conforme:</strong> {{ registrofresa.Producto_no_Conforme }}</li>
-      <li><strong>Fruta Seleccionada:</strong> {{ registrofresa.Fruta_Seleccionada }}</li>
-      <li><strong>Inicio de la Jornada:</strong> {{ registrofresa.Inicio_Jornada }}</li>
-      <li><strong>Selección del Producto:</strong> {{ registrofresa.Seleccion_del_Prodcuto }}</li>
-      <li><strong>Hora de puesta en la Olla:</strong> {{ registrofresa.Fresa_Entra_a_la_Olla }}</li>
-      <li><strong>Hora de Hervor :</strong> {{ registrofresa.Hervor_Inicio }}</li>
-      <li><strong>Introducción del Azúcar :</strong> {{ registrofresa.Introduccion_Azucar }}</li>
-      <li><strong>Introducción del Limón :</strong> {{ registrofresa.Introduccion_Limon }}</li>
-      <li><strong>Hora de Finalización del Hervor :</strong> {{ registrofresa.Hervor_Final }}</li>
-      <li><strong>Hora del Licuado:</strong> {{ registrofresa.Hora_Licuado }}</li>
-      <li><strong>Hora Final de la Fresa:</strong> {{ registrofresa.Hora_Final_Fresa }}</li>
-      <li><strong>Inicio del Empaque:</strong> {{ registrofresa.Inicio_de_Empaque }}</li>
-      <li><strong>Finalización de la Canasta:</strong> {{ registrofresa.Finalizacion_de_la_Canasta }}</li>
-      <li><strong>Valor Primer Brix:</strong> {{ registrofresa.Valor_Primer_Brix }}</li>
-      <li><strong>Hora Primer Brix:</strong> {{ registrofresa.Hora_Primer_Brix }}</li>
-      <li><strong>Valor Brix Final:</strong> {{ registrofresa.Valor_Brix_Final }}</li>
-      <li><strong>Hora Brix Final:</strong> {{ registrofresa.Hora_Brix_Final }}</li>
-      <li><strong>Producto Terminado:</strong> {{ registrofresa.Producto_Terminado }}</li>
-      <li><strong>Media Libra:</strong> {{ registrofresa.Media_Libra }}</li>
-      <li><strong>Libra:</strong> {{ registrofresa.Libra }}</li>
-      <li><strong>Bolsa Seis kg:</strong> {{ registrofresa.Bolsa_Seis_kg }}</li>
-      <li><strong>Otro:</strong> {{ registrofresa.Otro }}</li>
-      <li><strong>Observaciones:</strong> {{ registrofresa.Observaciones }}</li>
-      <li><strong>Registro ingresado por:</strong> {{ registrofresa.Usuario }}</li>
-     </ul>
+<div class="card-body">
+  <ul>
+    <li><strong>Canasta:</strong> {{ registrofresa.Canasta }}</li>
+    <li><strong>Fecha:</strong> {{ registrofresa.Fecha }}</li>
+    <li><strong>Contenido Total:</strong> {{ registrofresa.Contenido_Total }}</li>
+    <li><strong>Azúcar:</strong> {{ registrofresa.Azucar }}</li>
+    <li><strong>Limón:</strong> {{ registrofresa.Limon }}</li>
+    <li><strong>Producto no Conforme:</strong> {{ registrofresa.Producto_no_Conforme }}</li>
+    <li><strong>Fruta Seleccionada:</strong> {{ registrofresa.Fruta_Seleccionada }}</li>
+    <li><strong>Inicio de la Jornada:</strong> {{ registrofresa.Inicio_Jornada }}</li>
+    <li><strong>Selección del Producto:</strong> {{ registrofresa.Seleccion_del_Prodcuto }}</li>
+    <li><strong>Hora de puesta en la Olla:</strong> {{ registrofresa.Fresa_Entra_a_la_Olla }}</li>
+    <li><strong>Hora de Hervor :</strong> {{ registrofresa.Hervor_Inicio }}</li>
+    <li><strong>Introducción del Azúcar :</strong> {{ registrofresa.Introduccion_Azucar }}</li>
+    <li><strong>Introducción del Limón :</strong> {{ registrofresa.Introduccion_Limon }}</li>
+    <li><strong>Hora de Finalización del Hervor :</strong> {{ registrofresa.Hervor_Final }}</li>
+    <li><strong>Hora del Licuado:</strong> {{ registrofresa.Hora_Licuado }}</li>
+    <li><strong>Hora Final de la Fresa:</strong> {{ registrofresa.Hora_Final_Fresa }}</li>
+    <li><strong>Inicio del Empaque:</strong> {{ registrofresa.Inicio_de_Empaque }}</li>
+    <li><strong>Finalización de la Canasta:</strong> {{ registrofresa.Finalizacion_de_la_Canasta }}</li>
+    <li><strong>Valor Primer Brix:</strong> {{ registrofresa.Valor_Primer_Brix }}</li>
+    <li><strong>Hora Primer Brix:</strong> {{ registrofresa.Hora_Primer_Brix }}</li>
+    <li><strong>Valor Brix Final:</strong> {{ registrofresa.Valor_Brix_Final }}</li>
+    <li><strong>Hora Brix Final:</strong> {{ registrofresa.Hora_Brix_Final }}</li>
+    <li><strong>Producto Terminado:</strong> {{ registrofresa.Producto_Terminado }}</li>
+    <li><strong>Media Libra:</strong> {{ registrofresa.Media_Libra }}</li>
+    <li><strong>Libra:</strong> {{ registrofresa.Libra }}</li>
+    <li><strong>Bolsa Seis kg:</strong> {{ registrofresa.Bolsa_Seis_kg }}</li>
+    <li><strong>Otro:</strong> {{ registrofresa.Otro }}</li>
+    <li><strong>Observaciones:</strong> {{ registrofresa.Observaciones }}</li>
+    <li><strong>Registro ingresado por:</strong> {{ registrofresa.Usuario }}</li>
+  </ul>
       
-      {% if user == registrofresa.Usuario %}
-      <!-- Mostrar opciones de edición y eliminación solo si el usuario actual es el propietario -->
-      <form action="{% url 'registros:borrar_registro_fresa' registrofresa.id %}" method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger mt-3" onclick="return confirm('¿Estás seguro de que deseas borrar este registro?')">Borrar registro</button>
-        <a href="{% url 'registros:editar_registro_fresa' object.pk %}" class="btn btn-primary mt-3">Editar Registro</a>
-      </form>
+    
+    <a class="button" href="{% url 'registros:home' %}" style="margin-top: 20px; display: flex;">Ir a la Página Principal</a>
+    <a class="button" href="{% url 'registros:comparar_registros_fresa' %}" style="margin-top: 20px; display: flex">Compara tu Registro</a>
+    {% if user == registrofresa.Usuario %}
+    <!-- Mostrar opciones de edición y eliminación solo si el usuario actual es el propietario -->
+    <form action="{% url 'registros:borrar_registro_fresa' registrofresa.id %}" method="post">
+      {% csrf_token %}
+      <a class="button" href="{% url 'registros:editar_registro_fresa' object.pk %}" style="margin-top: 20px; display: flex;">Editar Registro</a>
+      <a type="submit" class="button" style="margin-top: 20px; display: flex" onclick="return confirm('¿Estás seguro de que deseas borrar este registro?')">Borrar registro</a>
+    </form>
     {% endif %}
-    <a href="{% url 'registros:home' %}" class="btn btn-primary">Ir a la Página Principal</a>
-    <a href="{% url 'registros:comparar_registros_fresa' %}" class="btn btn-primary mt-3">Compara tu Registro</a>
-  </div>
-{% endblock %}
+</div>
+
+{% endblock content %}

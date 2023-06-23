@@ -1,57 +1,17 @@
+{% extends 'registros/main.html' %}
 {% block content %}
-<title>Inicio de Sesion EntryLogs</title>
-<style>
-  /* Estilos personalizados */
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
 
-  .form {
-    max-width: 400px;
-    padding: 80px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
+<div class="header-bar">
+    <h3>Crea tu Usuario!</h3>
+</div>
 
-  .main-heading {
-    color: #007bff;
-    margin-bottom: 20px;
-  }
+<div class="card-body">
+  <form method="post">
+      {% csrf_token %}
+      {{ form.as_p}}
+      <button class="button" type="submit" style="margin-top: 20px; display: flex;">Resgistrarse</button>
+  </form>
+  <a href="{% url 'registros:home' %}" class="button" style="margin-top: 20px; display: flex;">Volver a la Página Principal</a>
+</div>
 
-  button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-
-  .btn-primary {
-    background-color: #007bff;
-    color: #fff;
-    padding: 6px 12px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-</style>
-<div class="form">
-    <h1 class= "main-heading">Crea tu Usuario!</h1>
-
-
-<form class="form" method="post">
-    {% csrf_token %}
-    {{ form.as_p}}
-
-    <button type="submit" id="submit">Resgistrarse</button>
-</form>
-<a href="{% url 'registros:home' %}" class="btn btn-primary">Volver a la Página Principal</a>
-{% endblock %}
+{% endblock content %}
